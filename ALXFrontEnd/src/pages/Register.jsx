@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { EyeIcon, EyeOffIcon, ChromeIcon } from "@/components/ui/Icons";
 import { motion } from "framer-motion";
-import { LINK_LOGIN } from "@/routes/routesv2";
+import { LINK_LOGIN } from "@/routes/routes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaRegister } from "@/lib/schema";
