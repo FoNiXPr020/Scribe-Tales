@@ -27,7 +27,7 @@ import {
   ApigetNotifications,
   ApiMarkNotificationAsRead,
   ApideleteNotification,
-} from "@/services/notifyApi";
+} from "@/services/notificationsApi";
 import { toast } from "react-toastify";
 
 export function NotificationsDropdown() {
