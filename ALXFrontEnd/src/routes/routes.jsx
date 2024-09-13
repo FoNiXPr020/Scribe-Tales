@@ -3,9 +3,9 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../layouts/Layout";
 
-import ProfileRoute from "./testing/ProfileRoute";
-import ProtectedRoute from "./testing/ProtectedRoute";
-import AuthRoute from "./testing/AuthRoute";
+import ProfileRoute from "../layouts/ProfileRoute";
+import ProtectedRoute from "../layouts/ProtectedRoute";
+import AuthRoute from "../layouts/AuthRoute";
 
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";

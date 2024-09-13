@@ -1,6 +1,6 @@
 import { ThemeProvider } from "./ThemeContext.jsx";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/routesv2.jsx";
+import { router } from "./routes/routes.jsx";
 import { AnimatePresence } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import { GoogleOAuthProvider } from "@react-oauth/google";
