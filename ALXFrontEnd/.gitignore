@@ -23,9 +23,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/routes/testing/
-src/pages/CreateStorycopy.jsx
-src/pages/Explore2.jsx
-src/routes/routesv3.jsx
-src/pages/Home_copy.jsx
-src/utils/generateImageLocalcoLab.jsx
