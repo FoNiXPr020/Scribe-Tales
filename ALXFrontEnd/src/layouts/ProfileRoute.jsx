@@ -9,7 +9,7 @@ import {
   getUserFollowers,
   checkFollow,
 } from "@/services/webApi";
-import Dashboard from "@/pages/Dashboard";
+import Dashboard from "@/pages/Dashboard/Dashboard";
 import NotFound from "@/pages/404.jsx";
 
 const ProfileRoute = () => {
