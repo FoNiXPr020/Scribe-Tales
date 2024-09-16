@@ -18,6 +18,10 @@ def check_text():
     data = request.json
     text = data.get('text', '')
 
+    # Check if text is provided
+    if not text:
+        return jsonify({'error': 'Text is required.'}), 400
+
     try:
         # Detect the language of the text
         detected_language = detect(text)
