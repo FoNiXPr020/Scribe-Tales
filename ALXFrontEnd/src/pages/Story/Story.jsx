@@ -18,6 +18,8 @@ import StoryComments from "@/pages/Story/StoryComments";
 import Familiar from "@/pages/Familiar";
 import NotFound from "@/pages/404";
 
+import Page from "@/Page";
+
 const Story = () => {
   const { user, isAuthenticated } = useAuth();
   const { id } = useParams();
@@ -184,6 +186,8 @@ const Story = () => {
   if (!story) return <NotFound />;
 
   return (
+    <>
+    <Page title={`Story of ${story.user.username}`} />
     <div className="flex min-h-screen flex-col">
       <main className="flex-1">
         <div className="container mx-auto px-2 py-10 md:px-6 lg:px-10 space-y-2 text-center">
@@ -220,6 +224,7 @@ const Story = () => {
         <Familiar familiar={familiar} />
       </main>
     </div>
+    </>
   );
 };
 
