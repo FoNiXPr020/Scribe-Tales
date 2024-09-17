@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMessageMail;
 
@@ -41,7 +42,6 @@ class GoogleController extends Controller
             ]);
 
             Mail::to($user->email)->queue(new WelcomeMessageMail($user));
-            //Mail::to($user->email)->send(new WelcomeMessageMail($user));
         } else {
             // Update the user if necessary
             if(is_null($user->google_id)) {
@@ -50,10 +50,8 @@ class GoogleController extends Controller
         }
 
         //$request->session()->regenerate();
-
         $token = $user->createToken($user->username)->plainTextToken;
-
-        //Auth::login($user);
+        Auth::login($user);
 
         return response(
             [

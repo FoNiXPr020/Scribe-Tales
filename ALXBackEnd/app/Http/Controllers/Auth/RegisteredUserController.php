@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use App\Mail\WelcomeMessageMail;
@@ -47,6 +48,7 @@ class RegisteredUserController extends Controller
         ]);
 
         Mail::to($user->email)->queue(new WelcomeMessageMail($user));
+        Auth::login($user);
         $token = $user->createToken($user->username)->plainTextToken;
 
         return response()->json([

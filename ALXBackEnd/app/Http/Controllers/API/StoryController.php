@@ -81,10 +81,10 @@ class StoryController extends Controller
      * @param  string  $story_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request, $story_id)
+    public function show($story_id)
     {
         // Get the authenticated user
-        $user = $request->user();
+        $user = Auth::user();
 
         // Fetch the story along with its user and like count
         $story = Story::with('user')->withCount('likes')->where('story_id', $story_id)->first();
@@ -97,9 +97,7 @@ class StoryController extends Controller
         // Check if the user is authenticated and then check if they have liked the story
         $isLiked = false;
         if ($user) {
-            $isLiked = $story->likes()->where('user_id', $user->id)->exists();
-        } else {
-            $isLiked = false;
+            $isLiked = $story->hasliked();
         }
 
         // Add the isLiked attribute to the story

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Story extends Model
 {
@@ -24,5 +25,10 @@ class Story extends Model
     public function notifications()
     {
         return $this->hasMany(Notification::class);
+    }
+
+    public function hasliked()
+    {
+        return $this->likes()->where('user_id', Auth::id())->exists();
     }
 }

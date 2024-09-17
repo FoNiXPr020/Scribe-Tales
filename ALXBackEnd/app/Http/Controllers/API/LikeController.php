@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Story;
 use App\Models\User;
-use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isEmpty;
 
 class LikeController extends Controller
 {
-    public function like($story_id, Request $request)
+    public function like($story_id)
     {
-        $user = $request->user();
+        $user = Auth::user();
 
         if (!$user) {
             return response()->json(['message' => 'Unauthorized'], 401);
@@ -34,9 +32,9 @@ class LikeController extends Controller
         return response()->json(['message' => 'Successfully liked the story']);
     }
 
-    public function unlike($story_id, Request $request)
+    public function unlike($story_id)
     {
-        $user = $request->user();
+        $user = Auth::user();
 
         if (!$user) {
             return response()->json(['message' => 'Unauthorized'], 401);
