@@ -142,7 +142,7 @@ const ProfilePassword = () => {
 
           <div className="flex items-center justify-end">
             <Link
-              to="/reset-password"
+              to="/forgot-password"
               className="text-muted-foreground transition-colors hover:underline"
             >
               Forgot Password?
