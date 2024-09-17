@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMessageMail;
 
 class GoogleController extends Controller
 {
@@ -38,7 +39,9 @@ class GoogleController extends Controller
                 'profile_cover' => null,
                 'password' => Hash::make(Str::random(12)),
             ]);
-            event(new Registered($user));
+
+            Mail::to($user->email)->queue(new WelcomeMessageMail($user));
+            //Mail::to($user->email)->send(new WelcomeMessageMail($user));
         } else {
             // Update the user if necessary
             if(is_null($user->google_id)) {
