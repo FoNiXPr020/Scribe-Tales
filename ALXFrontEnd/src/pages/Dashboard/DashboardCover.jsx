@@ -17,7 +17,7 @@ import {
 import { UsersRound, Loader2 } from "lucide-react";
 import { updateProfile } from "@/services/authApi";
 
-const DashboardCover = ({ user, LikesCount, followersCount, setUser }) => {
+const DashboardCover = ({ user, likesCount, followersCount, setUser }) => {
   const [showModal, setShowModal] = useState(false);
   const [coverImage, setCoverImage] = useState(null);
   const [Uploading, setUploading] = useState(false);
@@ -94,7 +94,7 @@ const DashboardCover = ({ user, LikesCount, followersCount, setUser }) => {
           className="absolute bottom-4 left-4 rounded-xl bg-background/90 text-muted-foreground hover:bg-background md:bottom-6 md:left-6"
         >
           <HeartIcon className="h-4 w-4 mr-2" />
-          <span>{LikesCount} Likes</span>
+          <span>{likesCount} Likes</span>
         </Button>
         <Button
           variant="outline"
