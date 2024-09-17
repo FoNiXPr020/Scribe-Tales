@@ -11,6 +11,7 @@ import {
   deleteComment,
 } from "@/services/storiesApi";
 import { like, unlike, FamiliarStories } from "@/services/webApi";
+import { Loader2 } from "lucide-react";
 
 // Components
 import StoryView from "@/pages/Story/StoryView";
@@ -27,6 +28,7 @@ const Story = () => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingComments, setIsLoadingComments] = useState(true);
   const [story, setStory] = useState(null);
   const [liked, setLiked] = useState(false);
   const [familiar, setFamiliar] = useState([]);
@@ -68,6 +70,8 @@ const Story = () => {
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
+    } finally {
+      setIsLoadingComments(false);
     }
   };
 
@@ -206,25 +210,31 @@ const Story = () => {
 
           <StoryView story={story} handleLike={handleLike} liked={liked} />
 
-          <StoryComments
-            comments={comments}
-            handleCommentSubmit={handleCommentSubmit}
-            newComment={newComment}
-            setNewComment={setNewComment}
-            isSubmitting={isSubmitting}
-            visibleComments={visibleComments}
-            handleLoadMoreComments={handleLoadMoreComments}
-            isEditing={isEditing}
-            editContent={editContent}
-            setEditContent={setEditContent}
-            editingCommentId={editingCommentId}
-            setEditingCommentId={setEditingCommentId}
-            handleEditComment={handleEditComment}
-            handleUpdateComment={handleUpdateComment}
-            handleDeleteComment={handleDeleteComment}
-            isDeleting={isDeleting}
-            user={user}
-          />
+          {isLoadingComments ? (
+            <div className="flex h-32 items-center justify-center">
+              <Loader2 className="mx-auto h-6 w-6 animate-spin" />
+            </div>
+          ) : (
+            <StoryComments
+              comments={comments}
+              handleCommentSubmit={handleCommentSubmit}
+              newComment={newComment}
+              setNewComment={setNewComment}
+              isSubmitting={isSubmitting}
+              visibleComments={visibleComments}
+              handleLoadMoreComments={handleLoadMoreComments}
+              isEditing={isEditing}
+              editContent={editContent}
+              setEditContent={setEditContent}
+              editingCommentId={editingCommentId}
+              setEditingCommentId={setEditingCommentId}
+              handleEditComment={handleEditComment}
+              handleUpdateComment={handleUpdateComment}
+              handleDeleteComment={handleDeleteComment}
+              isDeleting={isDeleting}
+              user={user}
+            />
+          )}
 
           <Familiar familiar={familiar} />
         </main>
