@@ -16,7 +16,7 @@ const schemaForgot = z.object({
   email: z
     .string()
     .min(1, { message: "Please enter your email address." })
-    .email({ message: "Please enter a valid email address." })
+    .email({ message: "Please enter a valid email address." }),
 });
 
 export default function ForgotPassword() {
@@ -74,9 +74,7 @@ export default function ForgotPassword() {
             {errors.email && (
               <p className="text-sm text-orange-800">{errors.email.message}</p>
             )}
-            {status && (
-              <p className="text-sm text-green-800">{status}</p>
-            )}
+            {status && <p className="text-sm text-green-800">{status}</p>}
           </div>
           <Button disabled={isSubmitting} type="submit" className="w-full">
             {isSubmitting ? (
