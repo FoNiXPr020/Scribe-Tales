@@ -42,8 +42,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/stories', StoryController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('/comments', CommentController::class)->only(['store', 'update', 'destroy']);
 
-    Route::get('/comments/{story_id}', [CommentController::class, 'index']);
-
     // Authenticated routes | Notifications
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::post('/notifications/mark-all-as-read', [NotificationController::class, 'markAllAsRead']);
@@ -56,8 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/users/{username}', [UserController::class, 'getUserByUsername']);
 Route::get('/users/stories/{username}', [StoryController::class, 'storiesByUser']);
 Route::get('/explore', [StoryController::class, 'index']);
-Route::middleware('auth:sanctum')->get('/explore/{story_id}', [StoryController::class, 'show']);
-
+Route::get('/explore/{story_id}', [StoryController::class, 'show']);
+Route::get('/comments/{story_id}', [CommentController::class, 'index']);
 Route::get('/user/followers/{username}', [FollowerController::class, 'getUserFollowers']);
 Route::get('/user/likes/{username}', [LikeController::class, 'getUserLikes']);
 
