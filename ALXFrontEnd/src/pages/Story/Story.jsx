@@ -39,18 +39,18 @@ const Story = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    fetchStory();
-    fetchFamiliar();
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
+  const fetchStory = async () => {
     try {
-      const response = await getComments(id);
-      setComments(response.data);
+      setIsLoading(true);
+      console.log("fetching story");
+      const response = await getStory(id);
+      setLiked(response.data.isLiked);
+      setStory(response.data);
     } catch (error) {
-      console.error("Error fetching comments:", error);
+      console.error("Error fetching story:", error);
+      setStory(null);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -63,18 +63,20 @@ const Story = () => {
     }
   };
 
-  const fetchStory = async () => {
+  const fetchComments = async () => {
     try {
-      const response = await getStory(id);
-      setLiked(response.data.isLiked);
-      setStory(response.data);
+      const response = await getComments(id);
+      setComments(response.data);
     } catch (error) {
-      console.error("Error fetching story:", error);
-      setStory(null);
-    } finally {
-      setIsLoading(false);
+      console.error("Error fetching comments:", error);
     }
   };
+
+  useEffect(() => {
+    fetchStory();
+    fetchFamiliar();
+    fetchComments();
+  }, [id]);
 
   const handleLike = async () => {
     if (!isAuthenticated) {
@@ -187,43 +189,43 @@ const Story = () => {
 
   return (
     <>
-    <Page title={`Story of ${story.user.username}`} />
-    <div className="flex min-h-screen flex-col">
-      <main className="flex-1">
-        <div className="container mx-auto px-2 py-10 md:px-6 lg:px-10 space-y-2 text-center">
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-            Explore a Story
-          </h2>
-          <p className="text-muted-foreground">
-            Dive into a captivating tale from our community of writers.
-          </p>
-        </div>
+      <Page title={`Story of ${story.user.username}`} />
+      <div className="flex min-h-screen flex-col">
+        <main className="flex-1">
+          <div className="container mx-auto px-2 py-10 md:px-6 lg:px-10 space-y-2 text-center">
+            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+              Explore a Story
+            </h2>
+            <p className="text-muted-foreground">
+              Dive into a captivating tale from our community of writers.
+            </p>
+          </div>
 
-        <StoryView story={story} handleLike={handleLike} liked={liked} />
+          <StoryView story={story} handleLike={handleLike} liked={liked} />
 
-        <StoryComments
-          comments={comments}
-          handleCommentSubmit={handleCommentSubmit}
-          newComment={newComment}
-          setNewComment={setNewComment}
-          isSubmitting={isSubmitting}
-          visibleComments={visibleComments}
-          handleLoadMoreComments={handleLoadMoreComments}
-          isEditing={isEditing}
-          editContent={editContent}
-          setEditContent={setEditContent}
-          editingCommentId={editingCommentId}
-          setEditingCommentId={setEditingCommentId}
-          handleEditComment={handleEditComment}
-          handleUpdateComment={handleUpdateComment}
-          handleDeleteComment={handleDeleteComment}
-          isDeleting={isDeleting}
-          user={user}
-        />
+          <StoryComments
+            comments={comments}
+            handleCommentSubmit={handleCommentSubmit}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            isSubmitting={isSubmitting}
+            visibleComments={visibleComments}
+            handleLoadMoreComments={handleLoadMoreComments}
+            isEditing={isEditing}
+            editContent={editContent}
+            setEditContent={setEditContent}
+            editingCommentId={editingCommentId}
+            setEditingCommentId={setEditingCommentId}
+            handleEditComment={handleEditComment}
+            handleUpdateComment={handleUpdateComment}
+            handleDeleteComment={handleDeleteComment}
+            isDeleting={isDeleting}
+            user={user}
+          />
 
-        <Familiar familiar={familiar} />
-      </main>
-    </div>
+          <Familiar familiar={familiar} />
+        </main>
+      </div>
     </>
   );
 };
