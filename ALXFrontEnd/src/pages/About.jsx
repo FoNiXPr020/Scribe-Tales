@@ -8,12 +8,14 @@ import {
 } from "@/components/ui/Icons";
 import { useTheme } from "@/ThemeContext";
 import AdvancedMotion from "@/components/motions/AdvancedMotion";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Page from "@/Page";
+
 export default function About() {
   const { theme } = useTheme();
+
   return (
-    <AnimatePresence>
+    <>
       <Page title="About" />
       <div className="flex min-h-screen flex-col">
         <main className="flex-1">
@@ -146,31 +148,35 @@ export default function About() {
                 <ul className="mt-6 space-y-4">
                   {[
                     {
+                      id: 1,
                       icon: FeatherIcon,
                       title: "Creativity",
                       description:
-                        "We believe in the power of creativity to transform lives and inspire change. We encourage and celebrate the unique voices and perspectives of our writers.",
+                        "We believe in the power of creativity to transform lives and inspire change...",
                     },
                     {
+                      id: 2,
                       icon: UsersIcon,
                       title: "Inclusivity",
                       description:
-                        "We strive to create a welcoming and inclusive community that celebrates diversity and fosters a sense of belonging for all.",
+                        "We strive to create a welcoming and inclusive community...",
                     },
                     {
+                      id: 3,
                       icon: BookIcon,
                       title: "Storytelling",
                       description:
-                        "We believe that storytelling has the power to connect people, foster empathy, and inspire positive change. We are dedicated to nurturing and celebrating the art of storytelling.",
+                        "We believe that storytelling has the power to connect people...",
                     },
                     {
+                      id: 4,
                       icon: ScalingIcon,
                       title: "Growth",
                       description:
-                        "We are committed to supporting the growth and development of our writers, providing them with the resources and opportunities they need to hone their craft and reach new heights.",
+                        "We are committed to supporting the growth and development of our writers...",
                     },
-                  ].map((value, index) => (
-                    <li key={index} className="flex items-start gap-4">
+                  ].map((value) => (
+                    <li key={value.id} className="flex items-start gap-4">
                       <div className="flex h-28 w-28 items-center justify-center rounded-full bg-primary text-primary-foreground">
                         <value.icon className="h-5 w-5" />
                       </div>
@@ -204,6 +210,6 @@ export default function About() {
           </section>
         </main>
       </div>
-    </AnimatePresence>
+    </>
   );
 }
