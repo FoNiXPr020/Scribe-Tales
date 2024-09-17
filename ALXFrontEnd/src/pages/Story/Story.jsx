@@ -41,7 +41,6 @@ const Story = () => {
 
   const fetchStory = async () => {
     try {
-      setIsLoading(true);
       console.log("fetching story");
       const response = await getStory(id);
       setLiked(response.data.isLiked);
@@ -100,6 +99,10 @@ const Story = () => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!newComment.trim()) return;
+
+    if (!isAuthenticated) {
+      return navigate("/login", { state: { from: location } });
+    }
 
     setIsSubmitting(true);
     try {
