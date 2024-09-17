@@ -83,36 +83,27 @@ class StoryController extends Controller
      */
     public function show(Request $request, $story_id)
     {
-        Log::info('Authorization Header:', ['Authorization' => $request->header('Authorization')]);
-
         // Get the authenticated user
         $user = $request->user();
-        Log::info('Authenticated User:', ['user' => $user]);
 
         // Fetch the story along with its user and like count
         $story = Story::with('user')->withCount('likes')->where('story_id', $story_id)->first();
 
         // Check if the story exists
         if (!$story) {
-            Log::error('Story not found:', ['story_id' => $story_id]);
             return response()->json(['error' => 'Story not found'], 404);
         }
-
-        Log::info('Story fetched:', ['story' => $story]);
 
         // Check if the user is authenticated and then check if they have liked the story
         $isLiked = false;
         if ($user) {
             $isLiked = $story->likes()->where('user_id', $user->id)->exists();
-            Log::info('Checking if story is liked:', ['isLiked' => $isLiked, 'user_id' => $user->id]);
         } else {
-            Log::info('No authenticated user found.');
+            $isLiked = false;
         }
 
         // Add the isLiked attribute to the story
         $story->isLiked = $isLiked;
-
-        Log::info('Final Story Response:', ['story' => $story]);
 
         // Return the story with the isLiked status
         return response()->json($story);
