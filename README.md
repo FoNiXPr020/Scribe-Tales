@@ -63,6 +63,7 @@ Scribe Tales is built using the following technologies:
 - **Laravel Breeze** (^2.1): Authentication scaffolding for Laravel.
 - **Laravel Pint** (^1.13): A code formatter following PSR-12 standards.
 - **Pest Plugin for Laravel** (pestphp/pest-plugin-laravel ^2.0): Adds Laravel-specific functionality to PestPHP for testing.
+- **Laravel Reverb**: For real-time functionality like live notifications and comments.
 
 ## Third-Party Services
 
