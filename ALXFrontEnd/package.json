@@ -64,7 +64,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@gradio/client": "^0.17.0",
+    "@gradio/client": "^1.5.2",
     "@swc/cli": "^0.4.0",
     "@swc/core": "^1.7.11",
     "@types/node": "^22.4.0",

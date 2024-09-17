@@ -11,7 +11,7 @@ import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Explore from "@/pages/Explore";
 import About from "@/pages/About";
-import CreateStory from "@/pages/CreateStory";
+import CreateStory from "@/pages/CreateStory/CreateStory";
 import Profile from "@/pages/Profile";
 import MyStories from "@/pages/MyStories";
 import Story from "@/pages/Story/Story";
