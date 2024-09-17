@@ -1,22 +1,14 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
-const grammarChecker = async (
-  text,
-  setErrors,
-  setOutput,
-  setLoading,
-  setShowModal
-) => {
-  setErrors([]);
+const grammarChecker = async (text, setOutput, setLoading, setShowModal) => {
   setOutput("");
   setLoading(false);
 
   if (!text) {
-    setErrors([
-      {
-        message: "Please enter a description",
-      },
-    ]);
+    toast.error(
+      "Please enter a description, it should be longer than 100 characters."
+    );
     return;
   }
 
@@ -27,10 +19,10 @@ const grammarChecker = async (
     });
 
     const { corrected_text, errors } = response.data;
-    //setErrors(errors);
     setOutput(corrected_text);
     setShowModal(true);
   } catch (error) {
+    toast.error("Error during grammar checking " + error.message);
     console.error("Error during grammar check:", error);
   }
   setLoading(false);
