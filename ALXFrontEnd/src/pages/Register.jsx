@@ -16,6 +16,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
+import Page from "@/Page";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -106,184 +107,191 @@ export default function Register() {
   }
 
   return (
-    <main className="container mx-auto max-w-md py-12 px-4 md:py-16">
-      <div className="mx-auto w-full max-w-md space-y-6">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Sign Up</h1>
-          <p className="text-muted-foreground">
-            Welcome to join our community! You can explore and connect with
-            other users.
-          </p>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-          <div className="grid gap-2">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="firstname">First Name</Label>
-                <Input
-                  id="firstname"
-                  placeholder="John"
-                  {...register("first_name")}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="lastname">Last Name</Label>
-                <Input
-                  id="lastname"
-                  placeholder="Doe"
-                  {...register("last_name")}
-                />
-              </div>
-            </div>
-
-            {(errors.first_name || errors.last_name) && (
+    <>
+      <Page title={"Sign Up"} />
+      <main className="container mx-auto max-w-md py-12 px-4 md:py-16">
+        <div className="mx-auto w-full max-w-md space-y-6">
+          <div className="space-y-2 text-center">
+            <h1 className="text-3xl font-bold">Sign Up</h1>
+            <p className="text-muted-foreground">
+              Welcome to join our community! You can explore and connect with
+              other users.
+            </p>
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+            <div className="grid gap-2">
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
-                  {errors.first_name && (
-                    <p className="text-sm text-orange-800">
-                      {errors.first_name.message}
-                    </p>
-                  )}
+                  <Label htmlFor="firstname">First Name</Label>
+                  <Input
+                    id="firstname"
+                    placeholder="John"
+                    {...register("first_name")}
+                  />
                 </div>
                 <div className="grid gap-2">
-                  {errors.last_name && (
-                    <p className="text-sm text-orange-800">
-                      {errors.last_name.message}
-                    </p>
-                  )}
+                  <Label htmlFor="lastname">Last Name</Label>
+                  <Input
+                    id="lastname"
+                    placeholder="Doe"
+                    {...register("last_name")}
+                  />
                 </div>
               </div>
-            )}
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              {...register("email")}
-            />
-            {errors.email && (
-              <p className="text-sm text-orange-800">{errors.email.message}</p>
-            )}
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="username">Username</Label>
-            <Input
-              id="username"
-              placeholder="JohnDoe40"
-              {...register("username")}
-            />
-            {errors.username && (
-              <p className="text-sm text-orange-800">
-                {errors.username.message}
-              </p>
-            )}
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="region">Region</Label>
-            <Input
-              id="region"
-              placeholder="Your Region"
-              {...register("region")}
-            />
-            {errors.region && (
-              <p className="text-sm text-orange-800">{errors.region.message}</p>
-            )}
-          </div>
 
-          <div className="grid gap-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
+              {(errors.first_name || errors.last_name) && (
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="grid gap-2">
+                    {errors.first_name && (
+                      <p className="text-sm text-orange-800">
+                        {errors.first_name.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="grid gap-2">
+                    {errors.last_name && (
+                      <p className="text-sm text-orange-800">
+                        {errors.last_name.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="relative">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
               <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                {...register("password")}
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                {...register("email")}
               />
-              <motion.a
-                className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2"
-                onClick={handleShowPassword}
-              >
-                <MotionRotate
-                  keyVar={showPassword ? "EyeOffIcon" : "EyeIcon"}
-                  rotate={showPassword ? 100 : -100}
-                  exitRotate={showPassword ? -100 : 100}
-                >
-                  {showPassword ? (
-                    <EyeOffIcon className="h-5 w-5" />
-                  ) : (
-                    <EyeIcon className="h-5 w-5" />
-                  )}
-                </MotionRotate>
-                <span className="sr-only">Toggle password visibility</span>
-              </motion.a>
+              {errors.email && (
+                <p className="text-sm text-orange-800">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
-            {errors.password && (
-              <p className="text-sm text-orange-800">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
-
-          <div className="grid gap-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="confirmPassword">Password Confirmation</Label>
-            </div>
-            <div className="relative">
+            <div className="grid gap-2">
+              <Label htmlFor="username">Username</Label>
               <Input
-                id="confirmPassword"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password Confirmation"
-                {...register("password_confirmation")}
+                id="username"
+                placeholder="JohnDoe40"
+                {...register("username")}
               />
+              {errors.username && (
+                <p className="text-sm text-orange-800">
+                  {errors.username.message}
+                </p>
+              )}
             </div>
-            {errors.password_confirmation && (
-              <p className="text-sm text-orange-800">
-                {errors.password_confirmation.message}
-              </p>
-            )}
-          </div>
+            <div className="grid gap-2">
+              <Label htmlFor="region">Region</Label>
+              <Input
+                id="region"
+                placeholder="Your Region"
+                {...register("region")}
+              />
+              {errors.region && (
+                <p className="text-sm text-orange-800">
+                  {errors.region.message}
+                </p>
+              )}
+            </div>
 
-          <Button disabled={isSubmitting} type="submit" className="w-full">
-            {isSubmitting ? (
-              <div className="flex items-center justify-center">
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Sign Up
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password">Password</Label>
               </div>
-            ) : (
-              "Sign Up"
-            )}
-          </Button>
-        </form>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  {...register("password")}
+                />
+                <motion.a
+                  className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2"
+                  onClick={handleShowPassword}
+                >
+                  <MotionRotate
+                    keyVar={showPassword ? "EyeOffIcon" : "EyeIcon"}
+                    rotate={showPassword ? 100 : -100}
+                    exitRotate={showPassword ? -100 : 100}
+                  >
+                    {showPassword ? (
+                      <EyeOffIcon className="h-5 w-5" />
+                    ) : (
+                      <EyeIcon className="h-5 w-5" />
+                    )}
+                  </MotionRotate>
+                  <span className="sr-only">Toggle password visibility</span>
+                </motion.a>
+              </div>
+              {errors.password && (
+                <p className="text-sm text-orange-800">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
 
-        <div className="flex items-center">
-          <hr className="flex-1" />
-          <span className="mx-4 text-muted-foreground">OR</span>
-          <hr className="flex-1" />
-        </div>
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="confirmPassword">Password Confirmation</Label>
+              </div>
+              <div className="relative">
+                <Input
+                  id="confirmPassword"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password Confirmation"
+                  {...register("password_confirmation")}
+                />
+              </div>
+              {errors.password_confirmation && (
+                <p className="text-sm text-orange-800">
+                  {errors.password_confirmation.message}
+                </p>
+              )}
+            </div>
 
-        <Button
-          variant="outline"
-          className="w-full"
-          onClick={() => GoogleAuth()}
-        >
-          <ChromeIcon className="mr-2 h-4 w-4" />
-          Sign In with Google
-        </Button>
+            <Button disabled={isSubmitting} type="submit" className="w-full">
+              {isSubmitting ? (
+                <div className="flex items-center justify-center">
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Sign Up
+                </div>
+              ) : (
+                "Sign Up"
+              )}
+            </Button>
+          </form>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
-          <Link
-            to={LINK_LOGIN}
-            className="font-medium text-primary-foreground hover:underline"
+          <div className="flex items-center">
+            <hr className="flex-1" />
+            <span className="mx-4 text-muted-foreground">OR</span>
+            <hr className="flex-1" />
+          </div>
+
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => GoogleAuth()}
           >
-            Sign In
-          </Link>
-        </p>
-      </div>
-    </main>
+            <ChromeIcon className="mr-2 h-4 w-4" />
+            Sign In with Google
+          </Button>
+
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <Link
+              to={LINK_LOGIN}
+              className="font-medium text-primary-foreground hover:underline"
+            >
+              Sign In
+            </Link>
+          </p>
+        </div>
+      </main>
+    </>
   );
 }

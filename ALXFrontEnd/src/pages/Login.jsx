@@ -14,6 +14,7 @@ import { schemaLogin } from "@/lib/schema";
 import { Loader2 } from "lucide-react";
 import { useGoogleLogin } from "@react-oauth/google";
 import MotionRotate from "@/components/motions/MotionRotate";
+import Page from "@/Page";
 
 export default function Login() {
   const { login: LoginSubmit, GoogleLogin } = useAuth();
@@ -105,108 +106,113 @@ export default function Login() {
   }
 
   return (
-    <main className="container mx-auto max-w-md py-12 px-4 md:py-24">
-      <div className="mx-auto w-full max-w-md space-y-6">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Sign in</h1>
-          <p className="text-muted-foreground">
-            Enter your email and password to access your account.
+    <>
+      <Page title="Login" />
+      <main className="container mx-auto max-w-md py-12 px-4 md:py-24">
+        <div className="mx-auto w-full max-w-md space-y-6">
+          <div className="space-y-2 text-center">
+            <h1 className="text-3xl font-bold">Sign in</h1>
+            <p className="text-muted-foreground">
+              Enter your email and password to access your account.
+            </p>
+          </div>
+          <form onSubmit={onSubmit} className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                name="email"
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-sm text-orange-800">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  to="/forgot-password"
+                  className={`text-sm text-foreground hover:underline`}
+                >
+                  Forgot password?
+                </Link>
+              </div>
+              <div className="relative">
+                <Input
+                  name="password"
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  {...register("password")}
+                />
+                <motion.a
+                  className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2"
+                  onClick={handleShowPassword}
+                >
+                  <MotionRotate
+                    keyVar={showPassword ? "EyeOffIcon" : "EyeIcon"}
+                    rotate={showPassword ? 100 : -100}
+                    exitRotate={showPassword ? -100 : 100}
+                  >
+                    {showPassword ? (
+                      <EyeOffIcon className="h-5 w-5" />
+                    ) : (
+                      <EyeIcon className="h-5 w-5" />
+                    )}
+                  </MotionRotate>
+                  <span className="sr-only">Toggle password visibility</span>
+                </motion.a>
+              </div>
+              {errors.password && (
+                <p className="text-sm text-orange-800">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            <Button disabled={isSubmitting} type="submit" className="w-full">
+              {isSubmitting ? (
+                <div className="flex items-center justify-center">
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Sign In
+                </div>
+              ) : (
+                "Sign In"
+              )}
+            </Button>
+          </form>
+
+          <div className="flex items-center">
+            <hr className="flex-1" />
+            <span className="mx-4 text-muted-foreground">OR</span>
+            <hr className="flex-1" />
+          </div>
+
+          <Button
+            variant="outline"
+            className="mt-2 w-full"
+            onClick={() => GoogleAuth()}
+          >
+            <ChromeIcon className="mr-2 h-4 w-4" />
+            Sign In with Google
+          </Button>
+
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link
+              to="/register"
+              className="font-medium text-primary-foreground hover:underline"
+            >
+              Sign up
+            </Link>
           </p>
         </div>
-        <form onSubmit={onSubmit} className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              name="email"
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              {...register("email")}
-            />
-            {errors.email && (
-              <p className="text-sm text-orange-800">{errors.email.message}</p>
-            )}
-          </div>
-          <div className="grid gap-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
-              <Link
-                to="/forgot-password"
-                className={`text-sm text-foreground hover:underline`}
-              >
-                Forgot password?
-              </Link>
-            </div>
-            <div className="relative">
-              <Input
-                name="password"
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                {...register("password")}
-              />
-              <motion.a
-                className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2"
-                onClick={handleShowPassword}
-              >
-                <MotionRotate
-                  keyVar={showPassword ? "EyeOffIcon" : "EyeIcon"}
-                  rotate={showPassword ? 100 : -100}
-                  exitRotate={showPassword ? -100 : 100}
-                >
-                  {showPassword ? (
-                    <EyeOffIcon className="h-5 w-5" />
-                  ) : (
-                    <EyeIcon className="h-5 w-5" />
-                  )}
-                </MotionRotate>
-                <span className="sr-only">Toggle password visibility</span>
-              </motion.a>
-            </div>
-            {errors.password && (
-              <p className="text-sm text-orange-800">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
-
-          <Button disabled={isSubmitting} type="submit" className="w-full">
-            {isSubmitting ? (
-              <div className="flex items-center justify-center">
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Sign In
-              </div>
-            ) : (
-              "Sign In"
-            )}
-          </Button>
-        </form>
-
-        <div className="flex items-center">
-          <hr className="flex-1" />
-          <span className="mx-4 text-muted-foreground">OR</span>
-          <hr className="flex-1" />
-        </div>
-
-        <Button
-          variant="outline"
-          className="mt-2 w-full"
-          onClick={() => GoogleAuth()}
-        >
-          <ChromeIcon className="mr-2 h-4 w-4" />
-          Sign In with Google
-        </Button>
-
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
-          <Link
-            to="/register"
-            className="font-medium text-primary-foreground hover:underline"
-          >
-            Sign up
-          </Link>
-        </p>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

@@ -18,7 +18,6 @@ import StoryView from "@/pages/Story/StoryView";
 import StoryComments from "@/pages/Story/StoryComments";
 import Familiar from "@/pages/Familiar";
 import NotFound from "@/pages/404";
-
 import Page from "@/Page";
 
 const Story = () => {

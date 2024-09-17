@@ -56,7 +56,6 @@ const reviews = [
 
 export default function Home() {
   const coverImages = ["covers/2.png", "covers/5.png", "covers/12.png"];
-
   return (
     <>
       <Page title="Home" />

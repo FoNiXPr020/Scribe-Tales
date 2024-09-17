@@ -30,6 +30,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import Page from "@/Page";
 
 const MyStories = () => {
   const [loading, setLoading] = useState(true);
@@ -96,6 +97,7 @@ const MyStories = () => {
 
   return (
     <>
+      <Page title="My Stories" />
       <div className="flex flex-col min-h-dvh">
         <main className="flex-1">
           <section className="w-full py-12 md:py-12">

@@ -7,14 +7,14 @@ import {
   ScalingIcon,
 } from "@/components/ui/Icons";
 import { useTheme } from "@/ThemeContext";
-import { Button } from "@/components/ui/button";
 import AdvancedMotion from "@/components/motions/AdvancedMotion";
 import { AnimatePresence, motion } from "framer-motion";
-
+import Page from "@/Page";
 export default function About() {
   const { theme } = useTheme();
   return (
     <AnimatePresence>
+      <Page title="About" />
       <div className="flex min-h-screen flex-col">
         <main className="flex-1">
           <section className="w-full py-12 md:py-6">
