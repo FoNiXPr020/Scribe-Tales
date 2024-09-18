@@ -89,6 +89,7 @@ export default function Explore() {
                   </p>
                   <div className="flex items-center gap-4 justify-center">
                     <Search
+                      SearchQuery={searchQuery}
                       placeholder="Search..."
                       setSearchQuery={setSearchQuery}
                     />
