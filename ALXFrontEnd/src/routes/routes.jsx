@@ -9,14 +9,14 @@ import AuthRoute from "../layouts/AuthRoute";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
-import Explore from "@/pages/Explore";
+import Explore from "@/pages/Explore"; // Old route of explore
+import Explore2 from "@/pages/Explore2"; 
 import About from "@/pages/About";
 import CreateStory from "@/pages/CreateStory/CreateStory";
 import Profile from "@/pages/Profile";
 import MyStories from "@/pages/MyStories";
 import Story from "@/pages/Story/Story";
 import Contact from "@/pages/Contact";
-import Explore2 from "@/pages/Explore2"; // Testing purposes only (remove later)
 import ForgotPassword from "@/pages/ForgotPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import NotFound from "@/pages/404";
@@ -34,7 +34,7 @@ export const LINK_RESET_PASSWORD = "/password-reset/:token";
 
 // Open routes
 export const LINK_EXPLORE = "/explore";
-export const LINK_EXPLORE2 = "/explore2"; // Testing purposes only (remove later)
+export const LINK_EXPLORE2 = "/explore2"; // Old route of explore
 export const LINK_EXPLORE_STORY = "/explore/:id";
 
 // Authenticated routes
@@ -58,8 +58,8 @@ const routes = [
       { path: LINK_REGISTER, element: <ProtectedRoute children={<Register />} /> },
       { path: LINK_FORGOT_PASSWORD, element: <ProtectedRoute children={<ForgotPassword />} /> },
       { path: LINK_RESET_PASSWORD, element: <ProtectedRoute children={<ResetPassword />} /> },
-      { path: LINK_EXPLORE, element: <Explore /> },
-      { path: LINK_EXPLORE2, element: <Explore2 /> }, // Testing purposes only (remove later)
+      { path: LINK_EXPLORE, element: <Explore2 /> },
+      { path: LINK_EXPLORE2, element: <Explore /> }, // Old Design (Check if needed)
       { path: LINK_EXPLORE_STORY, element: <Story /> },
       { path: LINK_CREATE_STORY, element: <AuthRoute children={<CreateStory />} /> },
       { path: LINK_USER_PROFILE, element: <AuthRoute children={<Profile />} /> },
