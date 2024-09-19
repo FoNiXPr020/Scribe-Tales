@@ -104,7 +104,7 @@ export default function Home() {
               transition={{ duration: 0.2 }}
             >
               <img
-                src="/story-featured.png"
+                src="/assets/covers/story-featured.png"
                 width="800"
                 height="600"
                 alt="Featured Story"
