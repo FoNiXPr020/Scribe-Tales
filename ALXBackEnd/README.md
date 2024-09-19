@@ -192,7 +192,5 @@ Ensure queues are managed properly using a process manager like Supervisor for q
 For any issues or questions related to the backend, please contact:
 
 - [Mohamed Barhoun](mailto:rogueman2018@gmail.com)
-- [Oumaima El Khanchoufi](mailto:omaimaelkhanchoufi9@gmail.com)
-
 
 This README now includes details about the API routes for the Laravel backend, making it clear how to interact with the various endpoints provided by your application.
