@@ -17,7 +17,6 @@ Welcome to Scribe Tales, a platform designed for writers to share their stories 
 ## Our Team
 
 - **[Mohamed Barhoun](https://github.com/FoNiXPr020)**: Full-stack Developer, Software Engineer
-- **[Oumaima El Khanchoufi](mailto:omaimaelkhanchoufi9@gmail.com)**: Full-stack Developer, Software Engineer
 
 
 ## Technologies
@@ -164,4 +163,3 @@ Make sure you have the following installed:
 For any questions or feedback, please reach out to us at:
 
 - [Mohamed Barhoun](mailto:rogueman2018@gmail.com)
-- [Oumaima El Khanchoufi](mailto:omaimaelkhanchoufi9@gmail.com)
