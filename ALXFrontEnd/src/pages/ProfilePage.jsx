@@ -76,7 +76,7 @@ export default function ProfilePage({
             src={
               userData?.profile_cover
                 ? userData?.profile_cover
-                : "/placeholder.svg"
+                : "/assets/placeholder.svg"
             }
             alt="Cover Image"
             width={1920}
