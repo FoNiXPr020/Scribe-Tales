@@ -12,6 +12,7 @@ use App\Http\Controllers\API\LikeController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\API\NotificationController;
+use App\Http\Controllers\ReviewController;
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
@@ -60,5 +61,14 @@ Route::get('/user/followers/{username}', [FollowerController::class, 'getUserFol
 Route::get('/user/likes/{username}', [LikeController::class, 'getUserLikes']);
 
 Route::get('/familiar', [StoryController::class, 'getFamiliarStoriesByType']);
+
+// review routes
+Route::get('/reviews', [ReviewController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/my-review', [ReviewController::class, 'show']);
+    Route::post('/reviews', [ReviewController::class, 'store']);
+    Route::post('/reviews/{id}', [ReviewController::class, 'update']);
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
+});
 
 require __DIR__.'/auth.php';
