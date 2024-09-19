@@ -46,6 +46,11 @@ const UserReview = () => {
   }, []);
 
   const handleCreateReview = async () => {
+    if (content.length < 30 || content.length > 100) {
+      toast.error("Review must be between 30 and 100 characters.");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const newReview = { stars: rating, text: content };
@@ -63,6 +68,11 @@ const UserReview = () => {
   };
 
   const handleUpdateReview = async () => {
+    if (content.length < 30 || content.length > 100) {
+      toast.error("Review must be between 30 and 100 characters.");
+      return;
+    }
+
     setIsLoading(true);
     if (review) {
       try {
