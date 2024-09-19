@@ -24,8 +24,9 @@ const grammarChecker = async (text, setOutput, setLoading, setShowModal) => {
   } catch (error) {
     toast.error("Error during grammar checking " + error.message);
     console.error("Error during grammar check:", error);
+  } finally {
+    setLoading(false);
   }
-  setLoading(false);
 };
 
 export default grammarChecker;

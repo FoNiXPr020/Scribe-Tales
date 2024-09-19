@@ -164,7 +164,6 @@ export default function CreateStory() {
   const handleRegenerateGrammar = async () => {
     await grammarChecker(
       grammarOutput,
-      setErrors,
       setGrammarOutput,
       (loading) =>
         setIsLoading((prev) => ({ ...prev, isLoadingGrammarCheck: loading })),
