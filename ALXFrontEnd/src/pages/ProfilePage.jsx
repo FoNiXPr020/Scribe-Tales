@@ -105,7 +105,7 @@ export default function ProfilePage({
           <div>
             <div className="flex items-center justify-center">
               <Avatar className="h-36 w-36 border-4 border-background rounded-full md:h-32 md:w-32">
-                <AvatarImage src={userData?.profile_photo || "/placeholder-user.jpg"} />
+                <AvatarImage src={userData?.profile_photo || "/assets/placeholder-user.jpg"} />
                 <AvatarFallback>{userData?.first_name}</AvatarFallback>
               </Avatar>
             </div>
@@ -207,7 +207,7 @@ export default function ProfilePage({
                             <AvatarImage
                               src={
                                 follower.profile_photo ||
-                                "/placeholder-user.jpg"
+                                "/assets/placeholder-user.jpg"
                               }
                             />
                             <AvatarFallback>GP</AvatarFallback>

@@ -72,7 +72,7 @@ const DashboardCover = ({ user, likesCount, followersCount, setUser }) => {
         <img
           src={
             cropData ||
-            (user.profile_cover ? user.profile_cover : "/placeholder.svg")
+            (user.profile_cover ? user.profile_cover : "/assets/placeholder.svg")
           }
           alt="Cover Image"
           width={1920}

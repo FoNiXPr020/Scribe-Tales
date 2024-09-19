@@ -93,7 +93,7 @@ const DashboardExplore = ({ user, stories, followers }) => {
                   <CardContent className="flex items-center gap-4 mt-5">
                     <Avatar className="h-12 w-12 border-2 border-background">
                       <AvatarImage
-                        src={follower.profile_photo || "/placeholder-user.jpg"}
+                        src={follower.profile_photo || "/assets/placeholder-user.jpg"}
                       />
                       <AvatarFallback>GP</AvatarFallback>
                     </Avatar>

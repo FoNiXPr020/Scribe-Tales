@@ -238,7 +238,7 @@ export default function Explore2() {
                                 <AvatarImage
                                   src={
                                     story.user.profile_photo ||
-                                    "/placeholder-user.jpg"
+                                    "/assets/placeholder-user.jpg"
                                   }
                                   alt={
                                     story.user.first_name[0] +

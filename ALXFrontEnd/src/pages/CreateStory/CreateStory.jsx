@@ -466,7 +466,7 @@ export default function CreateStory() {
                   <CardContent>
                     <div className="grid gap-4">
                       <img
-                        src={imagePreview || "/story-placeholder.png"}
+                        src={imagePreview || "/assets/covers/story-placeholder.png"}
                         alt="Story Image"
                         width={400}
                         height={225}

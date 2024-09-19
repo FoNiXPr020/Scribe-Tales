@@ -227,7 +227,7 @@ export function NotificationsDropdown() {
                   <AvatarImage
                     src={
                       notification.comment_user.profile_photo ||
-                      "/placeholder-user.jpg"
+                      "/assets/placeholder-user.jpg"
                     }
                     alt={`${notification.comment_user.first_name} ${notification.comment_user.last_name}`}
                   />

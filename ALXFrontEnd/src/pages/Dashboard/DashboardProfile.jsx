@@ -10,7 +10,7 @@ const DashboardProfile = ({ user }) => {
       <div className="space-y-2">
         <div className="flex items-center justify-center">
           <Avatar className="h-36 w-36 border-4 border-background rounded-full md:h-32 md:w-32">
-            <AvatarImage src={user?.profile_photo || "/placeholder-user.jpg"} />
+            <AvatarImage src={user?.profile_photo || "/assets/placeholder-user.jpg"} />
             <AvatarFallback>{user?.first_name[0] + user?.last_name[0] || "ST"}</AvatarFallback>
           </Avatar>
         </div>

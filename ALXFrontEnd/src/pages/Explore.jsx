@@ -121,7 +121,7 @@ export default function Explore() {
                                     <AvatarImage
                                       src={
                                         story?.user.profile_photo ||
-                                        "/placeholder-user.jpg"
+                                        "/assets/placeholder-user.jpg"
                                       }
                                     />
                                     <AvatarFallback>FoNiX</AvatarFallback>

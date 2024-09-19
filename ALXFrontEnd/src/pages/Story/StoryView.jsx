@@ -19,7 +19,7 @@ const StoryView = ({ story, handleLike, liked }) => {
               <div className="flex items-center gap-4">
                 <Avatar className="h-12 w-12">
                   <AvatarImage
-                    src={story?.user.profile_photo || "/placeholder-user.jpg"}
+                    src={story?.user.profile_photo || "/assets/placeholder-user.jpg"}
                   />
                   <AvatarFallback>GP</AvatarFallback>
                 </Avatar>
@@ -82,7 +82,7 @@ const StoryView = ({ story, handleLike, liked }) => {
       </div>
       <div className="relative overflow-hidden rounded-xl w-full h-full md:h-96">
         <img
-          src={story?.image || "/story-placeholder.png"}
+          src={story?.image || "/assets/covers/story-placeholder.png"}
           alt={story.user.username || "story image"}
           className="object-cover w-full h-full rounded-xl shadow-xl"
         />

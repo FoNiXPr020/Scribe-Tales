@@ -17,7 +17,7 @@ import {
 import { GetReviews } from "@/services/webApi";
 
 export default function Home() {
-  const coverImages = ["covers/2.png", "covers/5.png", "covers/12.png"];
+  const coverImages = ["assets/covers/2.png", "assets/covers/5.png", "assets/covers/12.png"];
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -242,7 +242,7 @@ export default function Home() {
                           <AvatarImage
                             src={
                               review.user.profile_photo ||
-                              "/placeholder-user.jpg"
+                              "/assets/placeholder-user.jpg"
                             }
                             alt={review.user.first_name}
                           />

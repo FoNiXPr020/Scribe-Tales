@@ -64,7 +64,7 @@ const StoryComments = ({
               <div className="flex items-start space-x-4">
                 <Avatar className="h-10 w-10">
                   <AvatarImage
-                    src={comment.user?.profile_photo || "/placeholder-user.jpg"}
+                    src={comment.user?.profile_photo || "/assets/placeholder-user.jpg"}
                   />
                   <AvatarFallback>ST</AvatarFallback>
                 </Avatar>

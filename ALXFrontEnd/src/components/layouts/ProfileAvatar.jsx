@@ -52,7 +52,7 @@ export const ProfileAvatar = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className="h-9 w-9 cursor-pointer">
-            <AvatarImage src={user?.profile_photo || "/placeholder-user.jpg"} />
+            <AvatarImage src={user?.profile_photo || "/assets/placeholder-user.jpg"} />
             <AvatarFallback>ST</AvatarFallback>
             <span className="sr-only">Toggle user menu</span>
           </Avatar>

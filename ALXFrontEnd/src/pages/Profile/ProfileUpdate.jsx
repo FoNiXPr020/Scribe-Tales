@@ -33,7 +33,7 @@ const ProfileUpdate = () => {
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
   const avatarCropperRef = useRef(null);
   const [avatarImage, setAvatarImage] = useState(
-    user?.profile_photo || "/placeholder-user.jpg"
+    user?.profile_photo || "/assets/placeholder-user.jpg"
   );
 
   const {

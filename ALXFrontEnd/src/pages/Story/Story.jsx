@@ -179,11 +179,11 @@ const Story = () => {
 
   const playSound = (type) => {
     const soundMap = {
-      Post: "/sounds/MagicPost.mp3",
-      Update: "/sounds/MagicUpdate.mp3",
-      Delete: "/sounds/MagicDelete.mp3",
-      Like: "/sounds/Like.mp3",
-      UnLike: "/sounds/UnLike.mp3",
+      Post: "/assets/sounds/MagicPost.mp3",
+      Update: "/assets/sounds/MagicUpdate.mp3",
+      Delete: "/assets/sounds/MagicDelete.mp3",
+      Like: "/assets/sounds/Like.mp3",
+      UnLike: "/assets/sounds/UnLike.mp3",
     };
     const audio = new Audio(soundMap[type]);
     audio.volume = type === "Delete" ? 0.1 : 0.2;
