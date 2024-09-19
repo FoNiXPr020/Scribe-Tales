@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AdvancedMotion from "@/components/motions/AdvancedMotion";
 import { Button } from "@/components/ui/button";
@@ -14,48 +14,30 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-const reviews = [
-  {
-    name: "Sarah J.",
-    avatar: "/avatar-sarah.png",
-    text: "Scribe Tales has transformed my reading experience. The stories are captivating and the community is so welcoming!",
-    stars: 3,
-  },
-  {
-    name: "Michael R.",
-    avatar: "/avatar-michael.png",
-    text: "As a writer, I've found an incredible platform to share my stories. The feedback from readers is invaluable!",
-    stars: 4,
-  },
-  {
-    name: "Emily T.",
-    avatar: "/avatar-emily.png",
-    text: "I've discovered so many talented writers on Scribe Tales. It's become my go-to place for quality stories!",
-    stars: 4,
-  },
-  {
-    name: "David L.",
-    avatar: "/avatar-david.png",
-    text: "The diversity of genres on Scribe Tales is impressive. There's always something new and exciting to read!",
-    stars: 2,
-  },
-  {
-    name: "Sophia K.",
-    avatar: "/avatar-sophia.png",
-    text: "I love how easy it is to connect with other readers and discuss our favorite stories. It's like a book club, but better!",
-    stars: 5,
-  },
-  {
-    name: "Alex M.",
-    avatar: "/avatar-alex.png",
-    text: "Scribe Tales has reignited my passion for writing. The supportive community and helpful feedback are priceless.",
-    stars: 4,
-  },
-];
+import { GetReviews } from "@/services/webApi";
 
 export default function Home() {
   const coverImages = ["covers/2.png", "covers/5.png", "covers/12.png"];
+  const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchReviews = async () => {
+    try {
+      const response = await GetReviews();
+      console.log(response);
+      setReviews(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [setReviews]);
+
   return (
     <>
       <Page title="Home" />
@@ -257,12 +239,16 @@ export default function Home() {
                     <CardContent className="p-6">
                       <div className="flex flex-col items-center text-center">
                         <Avatar className="w-20 h-20 mb-4">
-                          <AvatarImage src={review.avatar} alt={review.name} />
+                          <AvatarImage
+                            src={
+                              review.user.profile_photo ||
+                              "/placeholder-user.jpg"
+                            }
+                            alt={review.user.first_name}
+                          />
                           <AvatarFallback className="bg-muted dark:bg-background">
-                            {review.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
+                            {review.user.first_name[0] +
+                              review.user.last_name[0]}
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex items-center justify-center mb-4">
@@ -271,14 +257,16 @@ export default function Home() {
                               key={i}
                               className={`w-5 h-5 ${
                                 i < review.stars
-                                  ? "text-yellow-500 fill-current dark:text-yellow-500"
+                                  ? "text-orange-400 fill-current dark:text-orange-400"
                                   : "text-muted fill-current dark:text-background"
                               }`}
                             />
                           ))}
                         </div>
                         <p className="text-lg mb-4">"{review.text}"</p>
-                        <p className="font-semibold">- {review.name}</p>
+                        <p className="font-semibold">
+                          - {review.user.first_name} {review.user.last_name}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>

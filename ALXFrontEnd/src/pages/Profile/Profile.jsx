@@ -2,6 +2,7 @@
 
 import ProfileUpdate from "./ProfileUpdate";
 import ProfilePassword from "./ProfilePassword";
+import UserReview from "./UserReview";
 import Page from "@/Page";
 
 export default function Profile() {
@@ -24,6 +25,10 @@ export default function Profile() {
 
             <ProfilePassword />
           </div>
+          <div className="flex flex-col md:flex-row gap-8 mt-4">
+            <UserReview />
+          </div>
+          
         </main>
       </div>
     </>

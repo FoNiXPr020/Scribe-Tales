@@ -13,7 +13,7 @@ import Explore from "@/pages/Explore"; // Old route of explore
 import Explore2 from "@/pages/Explore2"; 
 import About from "@/pages/About";
 import CreateStory from "@/pages/CreateStory/CreateStory";
-import Profile from "@/pages/Profile";
+import Profile from "@/pages/Profile/Profile";
 import MyStories from "@/pages/MyStories";
 import Story from "@/pages/Story/Story";
 import Contact from "@/pages/Contact";

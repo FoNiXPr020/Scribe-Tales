@@ -36,3 +36,22 @@ export const FamiliarStories = async (writer_type, limit) => {
 export const getUsersStories = async (username) => {
   return await axiosClient.get("/users/stories/" + username);
 }
+
+export const GetReviews = async () => {
+  return await axiosClient.get("/reviews");
+}
+
+export const getMyReview = async () => {
+  return await axiosClient.get("/my-review");
+}
+
+export const createReview = async (data) => {
+  return await axiosClient.post("/reviews", data);
+}
+export const updateReview = async (id) => {
+  return await axiosClient.post(`/reviews/${id}`);
+}
+
+export const deleteReview = async (id) => { 
+  return await axiosClient.delete(`/reviews/${id}`); 
+}
