@@ -12,7 +12,7 @@ const ExploreSkeleton2 = () => {
     <motion.div variants={MotionCardContentVariant}>
     <Card className="flex flex-col rounded-2xl">
       <CardHeader className="p-0">
-        <Skeleton variant="rectangular" width="100%" height={120} />
+        <Skeleton variant="rectangular" width="100%" height={120} className="rounded-2xl"/>
       </CardHeader>
       <CardContent className="flex-1 p-4">
         <div className="flex items-center mb-2">
