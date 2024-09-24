@@ -11,7 +11,7 @@ const DashboardProfile = ({ user }) => {
         <div className="flex items-center justify-center">
           <Avatar className="h-36 w-36 border-4 border-background rounded-full md:h-32 md:w-32">
             <AvatarImage src={user?.profile_photo || "/assets/placeholder-user.jpg"} />
-            <AvatarFallback>{user?.first_name[0] + user?.last_name[0] || "ST"}</AvatarFallback>
+            <AvatarFallback>{"ST"}</AvatarFallback>
           </Avatar>
         </div>
         <h1 className="mt-4 text-center text-xl font-bold md:text-2xl">

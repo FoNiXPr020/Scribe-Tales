@@ -135,7 +135,7 @@ const ProfileUpdate = () => {
           <div className="relative">
             <Avatar className="h-24 w-24 border">
               <AvatarImage src={avatarImage} />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback>{"ST"}</AvatarFallback>
             </Avatar>
             <button
               className="absolute bottom-0 right-0 bg-primary text-primary-foreground rounded-full p-2 hover:bg-primary-hover transition-colors"
