@@ -39,6 +39,7 @@ export function NotificationsDropdown() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchNotifications = async () => {
+    if (loading) return;
     const response = await ApigetNotifications();
     console.log(response.data);
     setNotifications(response.data);
